@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide your name"],
         minLength: [3, "Name must contain atleast 3 character"],
-        maxLength: [3, "Name can not exceed 30 character"],
+        maxLength: [30, "Name can not exceed 30 character"],
 
     },
     email: {
@@ -25,11 +25,12 @@ const userSchema = new mongoose.Schema({
         required: [true, "Please provide your password"],
         minLength: [8, "Password must contain atleast 8 character"],
         maxLength: [32, "Password can not exceed 32 character"],
+        select: false,
     },
     role: {
         type: String,
         required: [true, "Please provide your role"],
-        enum: ["Jobb seeker", "Employer"],
+        enum: ["Job seeker", "Employer"],
     },
     createdAt: {
         type: Date,
@@ -56,3 +57,5 @@ userSchema.methods.getJWTToken = function () {
         expiresIn: process.env.JWT_EXPIRE,
     });
 };
+
+export const User = mongoose.model("User", userSchema);
