@@ -1,9 +1,9 @@
 import express from "express";
 import {
-    employerGetAllApplications,
-    jobseekerDeleteApplication,
-    jobseekerGetAllApplications,
-    postApplication,
+  employerGetAllApplications,
+  jobseekerDeleteApplication,
+  jobseekerGetAllApplications,
+  postApplication,
 } from "../controllers/applicationController.js";
 import { isAuthenticated } from "../middlewares/auth.js";
 
